@@ -1,9 +1,10 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
+import Navbar from '../components/NavBar';
 
 const Home: NextPage = () => {
   return (
     <div>
-      <h1>Console log project</h1>
+      <Navbar />
     </div>
   );
 };
