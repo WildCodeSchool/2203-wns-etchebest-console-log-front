@@ -1,12 +1,12 @@
 import Modal from "../components/Modal";
 import type { NextPage } from "next";
+import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <h1>Console log project</h1>
+    <Layout>
       <Modal />
-    </div>
+    </Layout>
   );
 };
 

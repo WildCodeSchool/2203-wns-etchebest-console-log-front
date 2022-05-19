@@ -35,7 +35,12 @@ const BasicModal: React.FC = () => {
       <Tooltip title="Create a new ticket">
         <IconButton>
           <AddCircleIcon
-            sx={{ color: "#1AB983", width: "2em", height: "2em" }}
+            sx={{
+              color: "#1AB983",
+              width: "2em",
+              height: "2em",
+              marginTop: "1em",
+            }}
             onClick={handleOpen}
           />
         </IconButton>
