@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PeopleIcon from '@mui/icons-material/People';
@@ -10,47 +9,70 @@ import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnes
 import Avatar from '@mui/material/Avatar';
 
 export default function Navbar() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
   return (
-    <div>
-      <Box
+    <Box
+      sx={{
+        flexGrow: 1,
+        bgcolor: 'background.paper',
+        display: 'flex',
+        borderRadius: '10px',
+        height: '100%',
+      }}
+    >
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        orientation='vertical'
+        aria-label='Vertical tabs example'
         sx={{
-          flexGrow: 1,
-          bgcolor: 'background.paper',
+          borderRight: 1,
+          borderColor: 'divider',
           display: 'flex',
-          height: '100vh',
-          width: '150px',
-          position: 'fixed',
-          borderRadius: '50%',
+          height: '100%',
+          paddingTop: '20px',
+          alignItems: 'center',
+          alignSelf: 'center',
+          justifyContent: 'center',
         }}
       >
-        <Tabs
-          orientation='vertical'
-          aria-label='Vertical tabs example'
+        <Avatar
           sx={{
-            borderRight: 1,
-            borderColor: 'divider',
-            height: '100vh',
+            width: 56,
+            height: 56,
+            justifyContent: 'center',
+            alignItems: 'center',
+            alignSelf: 'center',
           }}
         >
-          <Tab sx={{ height: 100, marginTop: '10px' }} label='Item One' />
-          <Tab
-            sx={{ height: 100, marginTop: '130px' }}
-            icon={<DashboardIcon />}
-            label='Dashboard'
-          />
-          <Tab sx={{ height: 100 }} icon={<PeopleIcon />} label='Item Three' />
-          <Tab
-            sx={{ height: 100 }}
-            icon={<SettingsBrightnessRoundedIcon />}
-            label='Item Four'
-          />
-          <Tab
-            sx={{ height: 100, marginTop: '320px' }}
-            icon={<PowerSettingsNewIcon />}
-            label='Connexion'
-          />
-        </Tabs>
-      </Box>
-    </div>
+          S
+        </Avatar>
+
+        <Tab
+          icon={<DashboardIcon />}
+          sx={{
+            fontSize: '10px',
+            paddingTop: '130px',
+          }}
+          label='Dashboard'
+        />
+
+        <Tab icon={<PeopleIcon />} sx={{ fontSize: '10px' }} label='Team' />
+        <Tab
+          icon={<SettingsBrightnessRoundedIcon />}
+          sx={{ fontSize: '10px' }}
+          label='Settings'
+        />
+        <Tab
+          icon={<PowerSettingsNewIcon />}
+          sx={{ fontSize: '10px', paddingTop: '140px' }}
+          label='Disconnect'
+        />
+      </Tabs>
+    </Box>
   );
 }
