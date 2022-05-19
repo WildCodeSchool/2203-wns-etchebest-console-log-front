@@ -1,11 +1,12 @@
 import type { NextPage } from "next";
+import Layout from "../components/Layout";
 import TicketBoard from "../components/TicketBoard";
 
 const TicketsBoard: NextPage = () => {
   return (
-    <div>
+    <Layout>
       <TicketBoard />
-    </div>
+    </Layout>
   );
 };
 

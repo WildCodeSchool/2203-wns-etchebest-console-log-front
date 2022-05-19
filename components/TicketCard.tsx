@@ -1,9 +1,6 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-
+import { Card, CardContent, Typography } from "@mui/material";
 export interface ITicketCard {
+  _id: string;
   title: string;
   description: string;
 }
@@ -13,8 +10,11 @@ const TicketCard = ({ title, description }: ITicketCard) => {
     <Card
       sx={{
         minWidth: 275,
+        height: "100px",
         borderRadius: "15px",
-        margin: "0 25px 10px",
+        border: "1px solid rgb(229 231 235)",
+
+        margin: "0 40px 15px",
         "&:hover": {
           cursor: "grab",
         },
@@ -28,7 +28,16 @@ const TicketCard = ({ title, description }: ITicketCard) => {
         >
           {title}
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: "16px" }}>
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: "16px",
+            whiteSpace: "nowrap",
+            display: "block",
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+          }}
+        >
           {description}
           <br />
         </Typography>

@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
 import GET_ALL_TICKETS from "../lib/queries/getAllTickets";
-import TicketBoard from "./TicketBoard";
+import TicketBoard from "../components/TicketBoard";
 
 test("loading", () => {
   render(
@@ -25,6 +25,7 @@ test("fetch data", async () => {
             data: {
               getAllTickets: [
                 {
+                  _id: "tjjtskjtjsjtst",
                   title: "Test",
                   description: "Ceci est un test;",
                 },
