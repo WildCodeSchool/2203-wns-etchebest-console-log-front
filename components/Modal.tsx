@@ -74,7 +74,7 @@ const BasicModal: React.FC = () => {
               />
             </Box>
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2, mb: 3 }}>
+          <Typography id="modal-modal-description" sx={{ pt: 2, pb: 3 }}>
             <Box
               component="form"
               sx={{
