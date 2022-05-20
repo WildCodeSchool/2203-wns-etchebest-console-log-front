@@ -30,16 +30,15 @@ const BasicModal: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <Container maxWidth="xl" sx={{ textAlign: "end" }}>
+    <Box maxWidth="xl" sx={{ textAlign: "end" }}>
       {/*   === debut du bouton AddCircle ===  */}
       <Tooltip title="Create a new ticket">
-        <IconButton sx={{marginTop: "1em",}}>
+        <IconButton sx={{ marginTop: "1em" }}>
           <AddCircleIcon
             sx={{
               color: "#1AB983",
               width: "2em",
               height: "2em",
-              
             }}
             onClick={handleOpen}
           />
@@ -103,7 +102,7 @@ const BasicModal: React.FC = () => {
           </Stack>
         </Box>
       </Modal>
-    </Container>
+    </Box>
   );
 };
 
