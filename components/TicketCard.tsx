@@ -10,7 +10,7 @@ const TicketCard = ({ title, description }: ITicketCard) => {
     <Card
       sx={{
         minWidth: 275,
-        height: "100px",
+        height: "150px",
         borderRadius: "15px",
         border: "1px solid rgb(229 231 235)",
         margin: "0 40px 15px",
