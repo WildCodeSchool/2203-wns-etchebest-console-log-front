@@ -13,7 +13,6 @@ const TicketCard = ({ title, description }: ITicketCard) => {
         height: "100px",
         borderRadius: "15px",
         border: "1px solid rgb(229 231 235)",
-
         margin: "0 40px 15px",
         "&:hover": {
           cursor: "grab",

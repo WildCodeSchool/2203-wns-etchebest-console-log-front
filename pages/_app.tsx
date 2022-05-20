@@ -1,8 +1,8 @@
 import type { AppProps } from "next/app";
-import dynamic from "next/dynamic";
-import "../styles/globals.css";
-
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import dynamic from "next/dynamic";
+import Layout from "../components/Layout";
+import "../styles/globals.css";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
@@ -12,7 +12,9 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 }

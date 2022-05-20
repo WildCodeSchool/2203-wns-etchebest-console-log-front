@@ -34,7 +34,7 @@ const TicketBoard = () => {
       sx={{
         flexGrow: 1,
         backgroundColor: "rgb(249, 249 251)",
-        padding: "0 60px 40px",
+        padding: "0 50px 40px",
       }}
     >
       <Grid container spacing={1}>

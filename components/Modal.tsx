@@ -37,8 +37,8 @@ const BasicModal: React.FC = () => {
           <AddCircleIcon
             sx={{
               color: "#1AB983",
-              width: "2em",
-              height: "2em",
+              width: "1.2em",
+              height: "1.2em",
             }}
             onClick={handleOpen}
           />
