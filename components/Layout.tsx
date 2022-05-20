@@ -1,6 +1,8 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import NavBar from "../components/NavBar";
+import { Box } from "@mui/material";
 
 const Layout: React.FC = ({ children }) => {
   return (
