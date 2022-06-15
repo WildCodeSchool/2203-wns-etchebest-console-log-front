@@ -8,6 +8,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import SettingsBrightnessRoundedIcon from "@mui/icons-material/SettingsBrightnessRounded";
 import Avatar from "@mui/material/Avatar";
 import Modal from "./Modal";
+import TicketBoard from "../components/TicketBoard";
 
 interface TabPanelProps {
   children?: ReactNode;
@@ -48,16 +49,17 @@ export default function Navbar() {
         height: "100%",
         display: "flex",
         justifyContent: "flex-start",
+        margin: 0,
       }}
     >
-      <Box sx={{ padding: 0 }}>
+      <Box sx={{ padding: 0, height: "100%" }}>
         <Avatar
           sx={{
             width: 56,
             height: 56,
             alignSelf: "center",
             position: "absolute",
-            left: "8%",
+            left: "115px",
             top: "8%",
           }}
         >
@@ -72,12 +74,14 @@ export default function Navbar() {
             borderRight: 1,
             borderColor: "divider",
             display: "flex",
-            height: "100%",
+
             paddingTop: "20px",
             width: "100px",
+            height: "100%",
+            justifyContent: "space-between",
           }}
         >
-          <Box sx={{ height: "8rem" }} tabIndex={0}></Box>
+          <Box sx={{ height: "13rem" }} tabIndex={0}></Box>
           <Tab
             icon={<DashboardIcon />}
             sx={{
@@ -102,7 +106,12 @@ export default function Navbar() {
 
           <Tab
             icon={<PowerSettingsNewIcon />}
-            sx={{ fontSize: "10px", alignSelf: "flex-end" }}
+            sx={{
+              fontSize: "10px",
+              alignSelf: "flex-end",
+              position: "absolute",
+              bottom: "30px",
+            }}
             label="Disconnect"
             tabIndex={4}
           />
@@ -110,6 +119,7 @@ export default function Navbar() {
       </Box>
       <TabPanel value={value} index={1}>
         <Modal />
+        <TicketBoard />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div>Team</div>
