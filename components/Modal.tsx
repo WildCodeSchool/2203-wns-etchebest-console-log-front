@@ -33,7 +33,7 @@ const BasicModal: React.FC = () => {
     <Box maxWidth="xl" sx={{ textAlign: "end" }}>
       {/*   === debut du bouton AddCircle ===  */}
       <Tooltip title="Create a new ticket">
-        <IconButton sx={{ marginTop: "1em" }}>
+        <IconButton sx={{ marginTop: "1em", marginRight: "0.4em" }}>
           <AddCircleIcon
             sx={{
               color: "#1AB983",
