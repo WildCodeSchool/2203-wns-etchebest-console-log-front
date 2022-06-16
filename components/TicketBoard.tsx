@@ -48,10 +48,10 @@ const TicketBoard = () => {
             To Do
           </Typography>
           <Box sx={cardContainerBorderStyle}>
-            {data?.getAllTickets.map((ticket: ITicketCard) => (
+            {data?.tickets.map((ticket: ITicketCard) => (
               <TicketCard
-                key={ticket._id}
-                _id={ticket._id}
+                key={ticket.id}
+                id={ticket.id}
                 title={ticket.title}
                 description={ticket.description}
               />

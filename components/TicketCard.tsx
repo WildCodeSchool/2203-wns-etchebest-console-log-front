@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography } from "@mui/material";
 export interface ITicketCard {
-  _id: string;
+  id: string;
   title: string;
   description: string;
 }
