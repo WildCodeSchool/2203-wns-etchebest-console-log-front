@@ -117,16 +117,18 @@ export default function Navbar() {
           />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={1}>
-        <Modal />
-        <TicketBoard />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <div>Team</div>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <div>Setting</div>
-      </TabPanel>
+      <Box sx={{ width: "100%" }}>
+        <TabPanel value={value} index={1}>
+          <Modal />
+          <TicketBoard />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <div>Team</div>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <div>Setting</div>
+        </TabPanel>
+      </Box>
     </Box>
   );
 }
