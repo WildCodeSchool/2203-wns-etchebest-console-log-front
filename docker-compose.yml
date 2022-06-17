@@ -12,7 +12,7 @@ services:
       - 5432:5432
     volumes:
       - ../db-data/:/var/lib/postgresql/data
-      - ../init-db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ../back/prisma/init/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
   back:
     stdin_open: true
     build: ../back/.
@@ -27,7 +27,6 @@ services:
       - 3000:3000
 volumes:
   db-data:
-  init-db:
 
  
 
