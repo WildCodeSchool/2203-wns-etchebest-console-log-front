@@ -23,9 +23,9 @@ test("fetch data", async () => {
           },
           result: {
             data: {
-              getAllTickets: [
+              tickets: [
                 {
-                  _id: "tjjtskjtjsjtst",
+                  id: "tjjtskjtjsjtst",
                   title: "Test",
                   description: "Ceci est un test;",
                 },
