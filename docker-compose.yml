@@ -21,13 +21,6 @@ services:
     ports:
       - 4000:4000
     restart: always
-  # prisma-studio:
-  #   image: timothyjmiller/prisma-studio:latest
-  #   depends_on:
-  #     - postgres
-  #   ports:
-  #     - 5555:5555
-  #   restart: unless-stopped
   front:
     build: .
     ports:
