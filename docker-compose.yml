@@ -38,9 +38,3 @@ services:
   #     - 5555:5555
   #   env_file:
   #     - '../back/prisma/.env'
-
- 
-
-    
-
-    
