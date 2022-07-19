@@ -4,26 +4,37 @@ services:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB:
-        ${POSTGRES_DB}
-        # PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ${POSTGRES_DB}
     env_file:
-      - "./.env"
+      - '.env'
     volumes:
       - ../db-data/:/var/lib/postgresql/data
-      - ../init-db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
   back:
-    stdin_open: true
     build: ../back/.
     depends_on:
       - postgres
     ports:
       - 4000:4000
     restart: always
+    volumes:
+      - ../back/prisma/:/app/prisma
+      - ../back/src/:/app/src
   front:
     build: .
     ports:
       - 3000:3000
-volumes:
-  db-data:
-  init-db:
+    volumes:
+      - ./pages/:/app/pages
+      - ./public/:/app/public
+      - ./components/:/app/components
+      - ./styles/:/app/styles
+  # prisma-studio:
+  #   container_name: prisma-studio
+  #   image: timothyjmiller/prisma-studio:latest
+  #   depends_on:
+  #     - postgres
+  #   restart: unless-stopped
+  #   ports:
+  #     - 5555:5555
+  #   env_file:
+  #     - '../back/prisma/.env'

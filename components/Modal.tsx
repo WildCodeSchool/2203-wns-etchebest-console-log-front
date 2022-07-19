@@ -8,8 +8,9 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import Stack from "@mui/material/Stack";
-import CREATE_TICKET from "../lib/queries/createTicket";
+import CREATE_ONE_TICKET from "../lib/queries/createOneTicket";
 import { useMutation } from "@apollo/client";
+import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -30,15 +31,21 @@ const BasicModal = () => {
 
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [createTicket, { data, loading, error }] = useMutation(CREATE_TICKET);
+  const [createOneTicket, { data, loading, error }] =
+    useMutation(CREATE_ONE_TICKET);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log("avant");
-    createTicket({ variables: { data: { title: title, description: description } } });
+    createOneTicket({
+      variables: { data: { title: title, description: description } },
+    });
     console.log("après");
     setTitle("");
     setDescription("");
+    handleClose();
+    /* setTrigger(Date.now()); */
+    /*  window.location.reload(); */
   };
   console.log("handlesubmitTEST", { handleSubmit });
   if (loading) return "Submitting...";
@@ -63,6 +70,7 @@ const BasicModal = () => {
 
       {/*   === debut  de la Modal ===  */}
       <Modal
+        sx={style}
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

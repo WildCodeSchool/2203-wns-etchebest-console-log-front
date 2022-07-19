@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { Box, Grid, Typography } from "@mui/material";
 import GET_ALL_TICKETS from "../lib/queries/getAllTickets";
 import TicketCard, { ITicketCard } from "./TicketCard";
+import { useState } from "react";
 
 const cardContainerStyle = {
   height: "600px",
@@ -27,6 +28,7 @@ const cardContainerBorderStyle = {
 
 const TicketBoard = () => {
   const { loading, error, data } = useQuery(GET_ALL_TICKETS);
+  const [trigger, setTrigger] = useState(0); // surveille les changements d'état
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
   return (
