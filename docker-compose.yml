@@ -1,5 +1,6 @@
 services:
   postgres:
+    container_name: postgres
     image: postgres:latest
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -10,6 +11,7 @@ services:
     volumes:
       - ../db-data/:/var/lib/postgresql/data
   back:
+    container_name: back
     build: ../back/.
     depends_on:
       - postgres
@@ -23,21 +25,18 @@ services:
     build: .
     ports:
       - 3000:3000
+    container_name: front
     volumes:
       - ./pages/:/app/pages
       - ./public/:/app/public
       - ./components/:/app/components
       - ./styles/:/app/styles
-  # prisma-studio:
-  #   container_name: prisma-studio
-  #   image: timothyjmiller/prisma-studio:latest
-  #   depends_on:
-  #     - postgres
-  #   restart: unless-stopped
-  #   ports:
-  #     - 5555:5555
-  #   env_file:
-  #     - '../back/prisma/.env'
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    container_name: adminer
 
  
 
