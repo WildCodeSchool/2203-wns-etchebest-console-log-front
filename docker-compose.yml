@@ -28,16 +28,16 @@ services:
       - ./public/:/app/public
       - ./components/:/app/components
       - ./styles/:/app/styles
-  prisma-studio:
-    container_name: prisma-studio
-    image: timothyjmiller/prisma-studio:latest
-    depends_on:
-      - postgres
-    restart: unless-stopped
-    ports:
-      - 5555:5555
-    env_file:
-      - '../back/prisma/.env'
+  # prisma-studio:
+  #   container_name: prisma-studio
+  #   image: timothyjmiller/prisma-studio:latest
+  #   depends_on:
+  #     - postgres
+  #   restart: unless-stopped
+  #   ports:
+  #     - 5555:5555
+  #   env_file:
+  #     - '../back/prisma/.env'
 
  
 
