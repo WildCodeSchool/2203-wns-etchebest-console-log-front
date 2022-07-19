@@ -9,7 +9,6 @@ services:
       - '.env'
     volumes:
       - ../db-data/:/var/lib/postgresql/data
-      - ../back/prisma/init/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
   back:
     build: ../back/.
     depends_on:
@@ -18,8 +17,8 @@ services:
       - 4000:4000
     restart: always
     volumes:
-      - ./prisma/:/app/prisma
-      - ./src/:/app/src
+      - ../back/prisma/:/app/prisma
+      - ../back/src/:/app/src
   front:
     build: .
     ports:
@@ -29,12 +28,16 @@ services:
       - ./public/:/app/public
       - ./components/:/app/components
       - ./styles/:/app/styles
-  # prisma-studio:
-  #   container_name: prisma-studio
-  #   image: timothyjmiller/prisma-studio:latest
-  #   restart: unless-stopped
-  #   ports:
-  #     - 5555:5555
+  prisma-studio:
+    container_name: prisma-studio
+    image: timothyjmiller/prisma-studio:latest
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    ports:
+      - 5555:5555
+    env_file:
+      - '../back/prisma/.env'
 
  
 
