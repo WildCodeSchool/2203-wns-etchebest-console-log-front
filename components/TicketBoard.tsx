@@ -34,7 +34,8 @@ const TicketBoard = () => {
       sx={{
         flexGrow: 1,
         backgroundColor: "rgb(249, 249 251)",
-        padding: "0 50px 40px",
+        padding: "30px 50px 40px",
+        maxHeight: "40%",
       }}
     >
       <Grid container spacing={1}>
@@ -43,7 +44,7 @@ const TicketBoard = () => {
             variant="h6"
             gutterBottom
             component="div"
-            sx={{ margin: "30px 40px", fontWeight: "bold" }}
+            sx={{ fontWeight: "bold" }}
           >
             To Do
           </Typography>

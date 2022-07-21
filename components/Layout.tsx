@@ -17,7 +17,13 @@ const Layout: React.FC = ({ children }) => {
     >
       <Paper
         elevation={2}
-        sx={{ width: "90%", height: "90%", borderRadius: "20px" }}
+        sx={{
+          width: "90%",
+          height: "90%",
+          borderRadius: "20px",
+          display: "flex",
+          flexDirection: "row",
+        }}
       >
         {children}
       </Paper>

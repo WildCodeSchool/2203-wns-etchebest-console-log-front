@@ -1,31 +1,125 @@
 import { useState } from "react";
 import { useLazyQuery, gql } from "@apollo/client";
-import LOGIN from "../lib/queries/login"
+import LOGIN from "../lib/queries/login";
+import { useRouter } from "next/router";
+import { resolve } from "path";
 
 const Login = () => {
-  const [email, setEmail] = useState("admin@gmail.com");
-  const [password, setPassword] = useState("p4ssw0rd");
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [getToken, { data }] = useLazyQuery(LOGIN);
   if (data) {
     console.log(data);
     localStorage.setItem("token", data.login);
   }
   return (
-    <>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button
-        onClick={async () => {
-          try {
-            await getToken({ variables: { email: email, password: password } });
-          } catch (err) {
-            console.log("Handle me", err);
-          }
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        height: "100%",
+        alignItems: "center",
+        backgroundColor: "rgb(255 255 255)",
+        borderRadius: "20px",
+        flexDirection: "column",
+        color: "#102F1D",
+        fontSize: "40px",
+        fontFamily: "'Cormorant SC', serif",
+      }}
+    >
+      <h1 style={{ paddingBottom: "50px" }}>Console.log</h1>
+      <div
+        style={{
+          width: "40vw",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "300px",
+          backgroundColor: "RGB(204, 238, 218)",
+          borderRadius: "20px",
+          boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          /*   border: "solid 1px grey" */
         }}
       >
-        Login
-      </button>
-    </>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            width: "100%",
+            padding: "30px",
+            /* height: "20px", */
+          }}
+        >
+          <input
+            style={{
+              height: "45px",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "none",
+              fontSize: "15px",
+            }}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+
+          <input
+            style={{
+              height: "45px",
+              width: "100%",
+              padding: "10px",
+              boxSizing: "border-box",
+              borderRadius: "5px",
+              marginTop: "25px",
+              border: "none",
+              fontSize: "15px",
+            }}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <div
+            style={{
+              paddingTop: "20px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              style={{
+                backgroundColor: "rgb(255 255 255)",
+                borderRadius: "5px",
+                paddingLeft: "15px",
+                paddingRight: "15px",
+                height: "30px",
+                width: "100px",
+                fontSize: "15px",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                fontFamily: "serif",
+                border: "none",
+              }}
+              onClick={async () => {
+                try {
+                  const token: string = await new Promise((resolve, reject) => {
+                    setTimeout(resolve, 1000, "thisisafaketoken");
+                    /*  setTimeout(reject, 1000, "thisisafaketoken"); */
+                  });
+                  localStorage.setItem("token", token);
+                  router.replace("/dashboard");
+                } catch (err) {
+                  alert("Invalid credentials");
+                }
+              }}
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
