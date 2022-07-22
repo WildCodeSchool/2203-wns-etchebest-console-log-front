@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useLazyQuery, gql } from "@apollo/client";
+import { useLazyQuery, gql, useQuery } from "@apollo/client";
 import LOGIN from "../lib/queries/login";
 import { useRouter } from "next/router";
-import { resolve } from "path";
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [getToken, { data }] = useLazyQuery(LOGIN);
+  const [login, { data }] = useLazyQuery(LOGIN);
   if (data) {
     console.log(data);
     localStorage.setItem("token", data.login);
@@ -103,14 +102,17 @@ const Login = () => {
               }}
               onClick={async () => {
                 try {
-                  const token: string = await new Promise((resolve, reject) => {
-                    setTimeout(resolve, 1000, "thisisafaketoken");
-                    /*  setTimeout(reject, 1000, "thisisafaketoken"); */
+                  const token = await login({
+                    variables: {
+                      userLoginInput: { email: email, password: password },
+                    },
                   });
-                  localStorage.setItem("token", token);
+                  console.log(token);
+                  localStorage.setItem("token", token.data.login);
                   router.replace("/dashboard");
                 } catch (err) {
                   alert("Invalid credentials");
+                  console.log(err);
                 }
               }}
             >
